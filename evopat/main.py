@@ -9,5 +9,5 @@ args = parser.parse_args()
 
 result = run_pipeline(args.pdf, args.query)
 
-print("\n===== FINAL OUTPUT =====\n")
-print(result)
+# print("\n===== FINAL OUTPUT =====\n")
+# print(result)

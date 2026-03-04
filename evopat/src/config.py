@@ -4,8 +4,8 @@ EMBEDDING_MODEL = "BAAI/bge-m3"
 FAISS_INDEX_PATH = "vectorstore/faiss_index.bin"
 METADATA_PATH = "vectorstore/metadata.pkl"
 
-MAX_CONTEXT_WORDS = 1500
-TOP_K = 3
+MAX_CONTEXT_WORDS = 2500
+TOP_K = 5
 
 CHUNK_SIZE = 300
 CHUNK_OVERLAP = 60

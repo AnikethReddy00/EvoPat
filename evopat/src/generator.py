@@ -15,7 +15,7 @@ model = AutoModelForCausalLM.from_pretrained(
 model.eval()
 
 
-def generate_response(prompt, max_new_tokens=500):
+def generate_response(prompt, max_new_tokens=600):
     inputs = tokenizer(prompt, return_tensors="pt").to(device)
 
     print("Prompt tokens:", inputs["input_ids"].shape[1])

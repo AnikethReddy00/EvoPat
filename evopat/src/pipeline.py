@@ -66,33 +66,11 @@ PATENT CONTEXT:
 
 Generate the following sections clearly and completely:
 
-Introduction:
-(4 to 5 sentences)
+Innovation
+Abstract
+Methodology
+Results
 
-Abstract:
-(3 to 4 sentences)
-
-Methodology:
-(6 to 8 sentences)
-
-Results:
-(3 to 5 sentences)
-
-After the above sections, provide evaluation strictly in valid JSON format.
-
-Each JSON text field must contain exactly 2 concise sentences.
-Scores must be integers between 0 and 10.
-
-Return ONLY the sections followed by JSON.
-
-{{
-    "novelty_score": 0,
-    "inventive_step_score": 0,
-    "overlap_analysis": "",
-    "key_differences": "",
-    "technical_insights": "",
-    "future_research_direction": ""
-}}
 """
 
     print("Generating response...")
@@ -103,11 +81,228 @@ Return ONLY the sections followed by JSON.
 
     # ---- EVALUATION ----
     gold_output = """
-Separating Ions at and Above Atmospheric Pressure.
-Innovation: Advanced ion separation mechanism at atmospheric pressure improving mass spectrometry efficiency.
-Abstract: Systems and methods for ion separation using electric field manipulation at atmospheric pressure.
-Methodology: Ion generation, electric field application, pressure-compatible ion optics, and integration with mass spectrometers.
-Results: Improved ion transmission efficiency and analytical precision.
+Innovation:
+AI-Powered Clinical Data Management and Medication Reconciliation System
+This patent introduces a system, method, and apparatus for annotated clinical data management, designed to centralize, validate, and reconcile patient medication and clinical data from disparate healthcare sources (e.g., hospitals, pharmacies, labs, EHRs). The innovation addresses critical gaps in medication adherence, polypharmacy risks, and care coordination by:
+
+Automatically aggregating clinical data (e.g., prescriptions, diagnoses, immunizations, vitals) from multiple sources (e.g., EHRs, pharmacies, labs) into a unified patient record.
+Detecting discrepancies between prescribed, filled, and actual medication usage via user-input comparisons and AI-driven validation.
+Generating interactive dashboards with color-coded statuses (e.g., "Validated," "Needs Review," "In Review") to flag non-adherence, duplicates, or errors.
+Enabling care managers to annotate, augment, or correct clinical data (e.g., adjusting dosages, adding notes on side effects).
+Supporting real-time collaboration among providers (e.g., physicians, pharmacists) with task assignments, follow-up flags, and audit trails.
+Integrating with EHRs and pharmacy systems to close loops in medication management (e.g., confirming refills, resolving conflicts).
+Ensuring compliance with regulatory standards (e.g., HIPAA, 21 CFR Part 11) through secure data handling and version control.
+
+Abstract:
+The patent describes a method, apparatus, and computer program product for managing clinical information by automating the reconciliation of medication and health data from diverse healthcare entities. The system:
+
+Receives clinical data (e.g., medications, diagnoses, lab results) from multiple sources (e.g., hospitals, pharmacies, EHRs) and consolidates it into a centralized record.
+Compares prescribed vs. actual medication usage to identify adherence gaps, duplicates, or errors, using user inputs and AI-driven rules.
+Generates a dynamic user interface with visible indicia (e.g., color codes, flags) to highlight statuses (e.g., "Validated," "Needs Review") and discrepancies (e.g., missed doses, incorrect dosages).
+Allows care managers to annotate, validate, or flag data for follow-up, ensuring accurate, up-to-date records.
+Facilitates team-based care with role-based access, task assignments, and audit trails for accountability.
+Supports regulatory compliance by tracking changes and documenting interventions.
+The system reduces medication errors, improves adherence, and enhances care coordination by transforming fragmented data into actionable, validated insights for providers.
+
+Methodology:
+1. Data Aggregation:
+
+Sources:
+
+EHRs (e.g., Epic, Cerner), pharmacy systems (e.g., CVS, Walgreens), labs (e.g., Quest, LabCorp), hospitals, and specialty clinics.
+Data Types: Medications (prescribed/filled), diagnoses, immunizations, vitals, lab results, allergies.
+
+Automated Ingestion:
+
+APIs/HL7/FHIR pull data in real-time (e.g., new prescriptions, lab updates).
+Patient Matching: Uses MRNs (Medical Record Numbers) or demographics (name, DOB) to link records across sources.
+
+Centralized Storage:
+
+Stores data in a structured database (e.g., SQL/NoSQL) with timestamped versions for auditability.
+
+2. Medication Reconciliation:
+
+Comparison Engine:
+
+Prescribed vs. Filled vs. Actual Usage:
+
+Prescribed: Doctor’s orders (e.g., "Lisinopril 10mg daily").
+Filled: Pharmacy records (e.g., "Lisinopril 10mg, 30-day supply, filled 5/1/2023").
+Actual Usage: Patient-reported or care manager-verified (e.g., "Takes 5mg every other day").
+
+Discrepancy Detection:
+
+Flags missed doses, wrong dosages, unauthorized changes, or duplicates (e.g., same drug from two providers).
+
+
+Status Assignment:
+
+Validated: Usage matches prescription.
+Needs Review: New data (e.g., new prescription) or unresolved discrepancies.
+In Review: Actively being investigated (e.g., patient non-adherence).
+Discontinued/Error: Outdated or incorrect data.
+
+3. User Interface (UI) Generation:
+
+Dashboards:
+
+Patient-Centric Views: Lists all medications with statuses, sources, and timestamps.
+Color Coding:
+
+Green: Validated.
+Yellow: Needs Review.
+Red: Critical discrepancy (e.g., drug interaction).
+
+Flags/Icons: Highlight urgent issues (e.g., ! for allergies, ⚠️ for duplicates).
+
+Drill-Down Details:
+
+Clicking a medication shows prescription history, fill records, and usage notes.
+Example: "Warfarin 5mg" → "Prescribed 6/1/2023; Filled 6/2/2023; Patient reports taking 2.5mg due to bruising."
+
+Annotation Tools:
+
+Care managers add notes (e.g., "Called patient—confirmed adherence") or correct errors (e.g., update dosage).
+
+4. Care Manager Workflows:
+
+Review Process:
+
+New Data Alerts: Notifications for unreviewed medications (e.g., "New Rx: Atorvastatin 20mg").
+Follow-Up Tasks: Assigns actions (e.g., "Call patient to confirm adherence").
+
+Collaboration:
+
+Shared Notes: Team members see annotations (e.g., "Pharmacist noted potential interaction with grapefruit").
+Task Assignment: Delegates resolution (e.g., "Nurse to educate patient on insulin timing").
+
+Audit Trails:
+
+Logs all changes (e.g., "Dosage adjusted from 10mg to 5mg on 6/15/2023 by Dr. Smith").
+
+5. Integration and Compliance:
+
+EHR/Pharmacy Sync:
+
+Bi-directional updates: Pushes validated data back to EHRs/pharmacies (e.g., "Patient now on 5mg Warfarin").
+Closed-Loop Reconciliation: Confirms pharmacy refills match prescriptions.
+
+Regulatory Standards:
+
+HIPAA: Encrypts PHI; restricts access via role-based permissions.
+21 CFR Part 11: Electronic signatures for data changes.
+
+Interoperability:
+
+HL7/FHIR APIs ensure compatibility with Epic, Cerner, Allscripts.
+
+6. AI and Automation:
+
+Rule-Based Validation:
+
+Drug Interaction Checks: Flags Warfarin + NSAIDs (bleeding risk).
+Dosage Alerts: "Patient on 2x prescribed dose of Metformin."
+
+Predictive Analytics:
+
+Identifies high-risk patients (e.g., polypharmacy, non-adherence patterns).
+
+Natural Language Processing (NLP):
+
+Extracts usage details from clinical notes (e.g., "Patient skips doses on weekends").
+
+7. Example Workflow (FIGS. 4A–4N):
+
+Data Ingestion:
+
+System receives new Rx for Lisinopril 10mg from EHR and fill record for 5mg from pharmacy.
+
+Discrepancy Flagged:
+
+UI shows yellow "Needs Review" status; care manager investigates.
+
+Patient Call:
+
+Care manager learns patient takes 5mg due to dizziness; annotates record.
+
+Status Updated:
+
+UI changes to "Validated (Adjusted Dosage)" with note: "Patient tolerates 5mg; notify PCP."
+
+PCP Alerted:
+
+System sends task to physician to approve dosage change.
+
+
+Results:
+Key Outcomes:
+
+
+Reduced Medication Errors:
+
+Catches 90% of discrepancies (e.g., wrong dosages, duplicates) before harm occurs.
+Example: Flags patient on 2x dose of insulin, preventing hypoglycemia.
+
+
+Improved Adherence:
+
+30% increase in adherence via real-time follow-ups (e.g., calls for missed doses).
+Personalized education (e.g., videos on how to use inhalers) boosts comprehension.
+
+
+Enhanced Care Coordination:
+
+50% fewer redundant tests (e.g., avoids repeating labs when records are centralized).
+Team alignment: Nurses, pharmacists, and doctors share notes in one system.
+
+
+Time and Cost Savings:
+
+Cuts reconciliation time by 70% (automates manual chart reviews).
+$2M/year saved in avoided hospitalizations (e.g., preventing drug interactions).
+
+
+Regulatory Compliance:
+
+100% audit-ready records with timestamped changes and e-signatures.
+HIPAA/GDPR compliant data handling.
+
+
+Patient Safety:
+
+40% reduction in adverse drug events (e.g., flags Warfarin + Cranberry Juice).
+Post-discharge support: Automated follow-up surveys on side effects.
+
+
+Scalability:
+
+Handles 10,000+ patients with cloud-based deployment.
+Adapts to any EHR/pharmacy system via FHIR APIs.
+
+Real-World Impact:
+
+Chronic Disease Management:
+
+Diabetes: Tracks HbA1c trends vs. metformin adherence; flags non-compliance.
+Hypertension: Alerts when BP remains high despite medication fills.
+
+Polypharmacy Patients:
+
+Elderly on 10+ meds: Identifies 3+ potential interactions per patient.
+
+Transitions of Care:
+
+Hospital → Home: Ensures discharge meds match outpatient Rxs.
+
+Clinical Trials:
+
+Protocol Adherence: Verifies patients take study drugs as prescribed.
+
+
+Why It Matters:
+This system transforms fragmented, error-prone medication management into a collaborative, data-driven process. By automating reconciliation, flagging risks, and enabling teamwork, it reduces harm, cuts costs, and improves outcomes—critical for high-risk populations (e.g., elderly, chronic disease patients) and complex care settings (e.g., ICUs, oncology). The innovation is foundational for value-based care, where accuracy and coordination directly impact patient safety and reimbursement.
+
 """
 
     cos_sim = cosine_similarity(response, gold_output)
@@ -120,3 +315,20 @@ Results: Improved ion transmission efficiency and analytical precision.
     print(f"BERT: {bert_sim}")
 
     return response
+
+
+# After the above sections, provide evaluation strictly in valid JSON format.
+
+# Each JSON text field must contain exactly 2 concise sentences.
+# Scores must be integers between 0 and 10.
+
+# Return ONLY the sections followed by JSON.
+
+# {{
+#     "novelty_score": 0,
+#     "inventive_step_score": 0,
+#     "overlap_analysis": "",
+#     "key_differences": "",
+#     "technical_insights": "",
+#     "future_research_direction": ""
+# }}
